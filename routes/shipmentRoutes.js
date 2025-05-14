@@ -12,9 +12,11 @@ router.get('/shipment/by-container/:containerId', shipmentController.getShipment
 
 // Create a new shipment
 router.post('/shipment', shipmentController.createShipment);
-
+    
 // Update shipment location
 router.post('/shipment/:id/update-location', shipmentController.updateShipmentLocation);
+
+router.put('/shipment/:id', shipmentController.updateShipment);
 
 // Get shipment ETA
 router.get('/shipment/:id/eta', shipmentController.getShipmentETA);

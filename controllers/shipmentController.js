@@ -47,6 +47,23 @@ exports.createShipment = async (req, res) => {
   }
 };
 
+// Add this new method:
+exports.updateShipment = async (req, res) => {
+  try {
+    const updatedShipment = await Shipment.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true, runValidators: true }
+    );
+    if (!updatedShipment) {
+      return res.status(404).json({ message: 'Shipment not found' });
+    }
+    res.status(200).json(updatedShipment);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
 // Update shipment location
 exports.updateShipmentLocation = async (req, res) => {
   try {
