@@ -3,24 +3,13 @@ const router = express.Router();
 const shipmentController = require('../controllers/shipmentController');
 
 // Get all shipments
-router.get('/shipments', shipmentController.getAllShipments);
+router.get('/', shipmentController.getAllShipments);
+router.get('/:id', shipmentController.getShipmentById);
+router.post('/', shipmentController.createShipment);
+router.put('/:id', shipmentController.updateShipment);
+router.post('/:id/update-location', shipmentController.updateShipmentLocation);
+router.get('/:id/eta', shipmentController.getShipmentETA);
+router.delete('/:id', shipmentController.deleteShipment);
 
-// Get a single shipment by ID
-router.get('/shipment/:id', shipmentController.getShipmentById);
-
-// Get a single shipment by container number
-router.get('/shipment/by-container/:containerId', shipmentController.getShipmentByContainerId);
-
-// Create a new shipment
-router.post('/shipment', shipmentController.createShipment);
-
-// Update shipment location
-router.post('/shipment/:id/update-location', shipmentController.updateShipmentLocation);
-
-// Get shipment ETA
-router.get('/shipment/:id/eta', shipmentController.getShipmentETA);
-
-// Delete a shipment
-router.delete('/shipment/:id', shipmentController.deleteShipment);
 
 module.exports = router;

@@ -21,7 +21,7 @@ mongoose.connect(process.env.MONGODB_URI)
   .catch(err => console.error('MongoDB connection error:', err));
 
 // Routes
-app.use('/', shipmentRoutes);
+app.use('/api/shipments', shipmentRoutes);
 
 // Home route
 app.get('/', (req, res) => {
